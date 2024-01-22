@@ -14,9 +14,9 @@ RUN apt-get update && \
     composer config -g process-timeout 3600 && \
     ln -sf /proc/1/fd/1 /var/log/cron.log
 
+# readonlyRootFilesystem=true時に必要
 VOLUME /var/laravel/storage
 VOLUME /var/run
-VOLUME /tmp
 
 COPY ./docker/laravel/php.ini /usr/local/etc/php/php.ini
 COPY ./docker/laravel/cron /var/spool/cron/crontabs/root
